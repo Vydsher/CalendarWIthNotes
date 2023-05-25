@@ -93,6 +93,7 @@ fun EmailField(modifier: Modifier = Modifier, value: String, onValueChange: (Str
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PasswordField(modifier: Modifier = Modifier, value: String, onValueChange: (String) -> Unit) {
     TextField(
