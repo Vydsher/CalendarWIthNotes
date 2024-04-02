@@ -1,18 +1,3 @@
-plugins {
-    id "org.sonarqube" version "3.3"
-}
-
-sonarqube {
-    properties {
-        property "sonar.projectKey", "vysher"
-        property "sonar.organization", "Vydsher_CalendarWithNotes"
-        property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.login", System.getenv("SONAR_TOKEN")
-    }
-}
-
-./gradlew clean build sonarqube
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
@@ -28,10 +13,20 @@ buildscript {
 
     }
 }
-
-
 plugins {
+    id "org.sonarqube" version "3.3"
     id 'com.android.application' version '8.0.1' apply false
     id 'com.android.library' version '8.0.1' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
 }
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "vysher"
+        property "sonar.organization", "Vydsher_CalendarWithNotes"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.login", System.getenv("SONAR_TOKEN")
+    }
+}
+
+./gradlew clean build sonarqube
