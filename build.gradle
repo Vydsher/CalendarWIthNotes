@@ -4,8 +4,8 @@ plugins {
 
 sonarqube {
     properties {
-        property "sonar.projectKey", "your_project_key"
-        property "sonar.organization", "your_organization_key"
+        property "sonar.projectKey", "vysher"
+        property "sonar.organization", "Vydsher_CalendarWithNotes"
         property "sonar.host.url", "https://sonarcloud.io"
         property "sonar.login", System.getenv("SONAR_TOKEN")
     }
