@@ -1,21 +1,24 @@
-name: SonarCloud analysis
+name: SonarQube Analysis
 
 on:
   push:
     branches:
       - main
-  pull_request:
-      types: [opened, synchronize, reopened]
 
 jobs:
-  sonarcloud:
+  sonarqube-analysis:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
       with:
-        fetch-depth: 0
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-sonarqube@master
+        java-version: '11'
+
+    - name: SonarQube Scan
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: |
+        ./gradlew sonarqube
